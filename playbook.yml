@@ -1,0 +1,21 @@
+---
+- name: take metrics
+  hosts: all
+  become: true  # Run tasks with sudo
+  roles:
+    - role: Metrics
+
+- name: install and configure prometheus
+  hosts: label_environment_prometheus
+  become: true  # Run tasks with sudo
+  roles:
+    - role: installprometheus
+    - role: installAlert
+
+
+- name: install and configure grafana
+  hosts: label_environment_grafana
+  become: true  # Run tasks with sudo
+  roles:
+    - role: installgrafana
+    - role: configuregrafana
