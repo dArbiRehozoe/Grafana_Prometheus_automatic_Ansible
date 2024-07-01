@@ -1,0 +1,11 @@
+groups:
+  - name: example
+    rules:
+      - alert: HighCpuUsage
+        expr: process_cpu_seconds_total >= 1
+        for: 10s
+        labels:
+          severity: critical
+        annotations:
+          summary: "High CPU Usage"
+          description: "CPU usage is higher than 60% for 1 minute."
